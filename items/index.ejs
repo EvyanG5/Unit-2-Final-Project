@@ -10,5 +10,18 @@
 
     <h1>Welcome to the Haus of Wholesale!</h1>
     <a href='/' >'Add New Item'</a>
+    <!-- views/applications/index.ejs -->
+
+<ul>
+  <% items.forEach((item)=>{ %>
+  <li>
+    <!-- Add a link around each application, directing to the 'show' page -->
+    <a href="/users/<%= user._id %>/items/<%= items._id>">
+      <%= item.description %> at <%= item.price %>
+    </a>
+  </li>
+  <% }) %>
+</ul>
+
   </body>
 </html>
