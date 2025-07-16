@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <title>Homepage</title>
+  </head>
+  <body style = 'background-color: black;'>
+<% if (user) { %>
+  <h1 style = "color:blue;">Welcome to the Haus of Wholesale!   <%= user.username %></h1>
+
+    <h4 style = "color: red">List your new item today!</h4>
+    <p style = "color: white;"> </p>
+    <a href='/items/new' >'Add New Item'</a>
+    <p>
+      <a href="/auth/sign-out">Sign out</a>
+    </p>
+    <% } else { %>
+    <h1>Welcome to the app, guest.</h1>
+    <p>
+      <a href="/auth/sign-up">Sign up</a> or
+      <a href="/auth/sign-in">Sign in</a>.
+    </p>
+    <% } %>
+     <ul>
+      
+</html>
+
+  </body>
+</html>

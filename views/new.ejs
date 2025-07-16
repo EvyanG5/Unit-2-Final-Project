@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+  <title></title>
+  <%- include('./partials/_navbar.ejs') %>
+
+</head>
+<body>
+
+<h2>Add New Item</h2>
+<div class="new-body"></div>
+<form method="POST" action="/items">
+  <label>Name</label>
+    <input type="text" name="name">
+    <label>Color</label>
+  <input type="text" name='color'>
+  <label>Price</label>
+  <input type="number" name="price">
+  <label>Item Type</label>
+  <input type="'text" name="itemType">
+  <label>Sellers Agreement?</label>
+  <input type="text" name="sellersAgreement">
+  <label>Description</label>
+  <input type="text" name="description">
+  <input type="submit" value="Create">
+  <button>Add Item</button>
+</form>
+
+
+</form>
+</body>
+
+</html>

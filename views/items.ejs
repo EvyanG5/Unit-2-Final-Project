@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+  <title>Items List Page</title>
+</head>
+ <%- include('./partials/_navbar.ejs') %>
+<body>
+    <h1 style = "color:blue;">Item List</h1>
+
+<h2>Your Items</h2>
+<a href="/items">View Item Menu</a>
+
+<ul>
+  <% items.forEach(item => { %>
+    <li>
+      <strong><%= item.name %></strong>: <%= item.description %>
+    </li>
+  <% }) %>
+</ul>
+<a href="/">Back to Home</a>
+
+</body>
+</html>

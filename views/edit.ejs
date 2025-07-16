@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+  <title>Editing <%itemSchema.name %> at <%itemSchema.price%></title>
+  <%- include('./partials/_navbar.ejs') %>
+
+</head>
+<body>
+  <div class="edit-body"></div>
+<h1>Edit <%itemSchema.name %> at <%itemSchema.price%></h1>
+<form method="POST" action="/items/users/<%=user._id%>?_method=PUT">
+ <label for="name">Name:</label>
+  <input type="text" name="name">
+ <label for="color">Color:</label>
+  <input type="text" name='color'>
+<label for="price">Price:</label>
+  <input type="number" name="price">
+   <label for="itemType">Item Type:</label>
+  <input type="'text" name="itemType">
+  <label for="sellersAgreement">Sellers Agreement:</label>
+  <input type="text" name="sellersAgreement">
+  <label for="description">Description:</label>
+  <input type="text" name="description">
+  <input type="submit" value="Create">
+
+</form>
+</body>
+
+</html>

@@ -3,10 +3,25 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
     <title>My Items</title>
   </head>
   <body>
-    <%- include('../partials/_navbar.ejs') %>
+    <body class="index-body">
+  <%- include('./partials/_navbar.ejs') %>
+  <div class="index-container">
+    <div class="text-container">
+      <h1 class="main-header">Wholesale House, A Place to Sell Wholy</h1>
+      <p class="subheader">Sell your item today</p>
+    </div>
+    <div class="auth-links">
+      <a class="signup-link" href="/auth/sign-up">Sign Up</a>
+      <a class="signin-link" href="/auth/sign-in">Sign In</a>
+    </div>
+  </div>
+</body>
+<div class="all-items-body">
+  <div class="all-items-header">
 
     <h1>Welcome to the Haus of Wholesale!</h1>
     <a href='/' >'Add New Item'</a>
