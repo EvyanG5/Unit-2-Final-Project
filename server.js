@@ -55,7 +55,46 @@ app.use(isSignedIn);
 app.use('/items', itemsController);
 
 
+// UPDATE - Handle update form
+app.post('/update/:id', (req, res) => {
+  const item = items.find(i => i.id == req.params.id);
+  if (item) item.name = req.body.name;
+  res.redirect('/');
+});
+// DELETE - Handle delete request
+app.post('/delete/:id', (req, res) => {
+  items = items.filter(i => i.id != req.params.id);
+  res.redirect('/');
+});
+// CREATE - Handle new item form  
+app.use('/items', itemsController); 
+app.use(express.json());      
+app.use(morgan('dev'));
+app.set('view engine', 'ejs'); 
 
+//DELETE - Handle delete request
+app.post('/delete/:id', (req, res) => {
+  items = items.filter(i => i.id != req.params.id);
+  res.redirect('/');
+});
+app.post('/items', async (req, res) => {
+  try {
+    const newItem = new items(req.body);
+    await newItem.save();
+    res.status(201).json(newItem);
+  } catch (err) {
+    res.status(400).send(err.message);
+  }
+});
+
+app.get('/items', async (req, res) => {
+  try {
+    const allItems = await items.find();
+    res.json(allItems);
+  } catch (err) {
+    res.status(500).send(err.message);
+  }
+});
 app.listen(port, () => {
   console.log(`The express app is ready on port ${port}!`);
 });
