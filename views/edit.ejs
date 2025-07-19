@@ -1,32 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/stylesheets/style.css" />
-  <title>Editing <%itemSchema.name %> at <%itemSchema.price%></title>
-  <%- include('./partials/_navbar.ejs') %>
-
+  <title>Edit Item</title>
 </head>
 <body>
-  <div class="edit-body"></div>
-<h1>Edit <%itemSchema.name %> at <%itemSchema.price%></h1>
-<form method="POST" action="/items/users/<%=user._id%>?_method=PUT">
- <label for="name">Name:</label>
-  <input type="text" name="name">
- <label for="color">Color:</label>
-  <input type="text" name='color'>
-<label for="price">Price:</label>
-  <input type="number" name="price">
-   <label for="itemType">Item Type:</label>
-  <input type="'text" name="itemType">
-  <label for="sellersAgreement">Sellers Agreement:</label>
-  <input type="text" name="sellersAgreement">
-  <label for="description">Description:</label>
-  <input type="text" name="description">
-  <input type="submit" value="Create">
-
-</form>
+  <h1>Edit Item</h1>
+  <form action="/items/<%= item._id %>/edit" method="POST">
+    <label>Name: <input type="text" name="name" value="<%= item.name %>" required></label><br>
+    <label>Price: <input type="number" name="price" step="0.01" value="<%= item.price %>" required></label><br>
+    <label>Description:<br>
+      <textarea name="description"><%= item.description %></textarea>
+    </label><br>
+    <button type="submit">Update Item</button>
+  </form>
+  <a href="/items">Back to items</a>
 </body>
-
 </html>

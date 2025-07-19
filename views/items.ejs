@@ -5,22 +5,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/stylesheets/style.css" />
   <title>Items List Page</title>
-</head>
- <%- include('./partials/_navbar.ejs') %>
+  <%- include('./partials/_navbar.ejs') %>
+
+  </head>
 <body>
-    <h1 style = "color:blue;">Item List</h1>
+  <h1>Your Items</h1>
+  <a href="/items/new">Add New Item</a>
+  <ul id="item-list">
+    <% items.forEach(item => { %>
+      <li class="item" id="item-<%= item._id %>">
+        <strong><%= item.name %></strong> — $<%= item.price %><br>
+        <%= item.description %><br>
+        <a href="/items/<%= item._id %>/edit">Edit</a>
 
-<h2>Your Items</h2>
-<a href="/YourItems">View Item Menu</a>
+        <button onclick="deleteItem('<%= item._id %>')">Delete</button>
+      </li>
+    <% }) %>
+  </ul>
 
-<ul>
-  <% items.forEach(item => { %>
-    <li>
-      <strong><%= item.name %></strong>: <%= item.description %>
-    </li>
-  <% }) %>
-</ul>
-<a href="/">Back to Home</a>
+  <script>
+    async function deleteItem(itemId) {
+      if (!confirm('Are you sure you want to delete this item?')) return;
 
+      const res = await fetch(`/items/${itemId}`, {
+        method: 'DELETE'
+      });
+
+      if (res.ok) {
+        const itemElement = document.getElementById(`item-${itemId}`);
+        if (itemElement) itemElement.remove();
+      } else {
+        alert('Failed to delete item.');
+      }
+    }
+  </script>
 </body>
 </html>

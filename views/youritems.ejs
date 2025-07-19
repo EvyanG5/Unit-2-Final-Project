@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head><title>Your Items</title></head>
+<body>
+    
+
+   
+    <ul>
+        <% items.forEach(item => { %>
+            <li>
+                <strong><%= '$' + item.price %></strong>: <%= item.description %>
+                <a href="/items/<%= item._id %>/edit">Edit</a>
+            </li>
+        <% }) %>
+    </ul>
+</body>
+</html>
+<a href="/">Back to Home</a>
